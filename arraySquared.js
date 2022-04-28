@@ -1,5 +1,6 @@
 //Write a function, which accepts two arrays.
-//The function should return true if every value in the array has it's corresponding value squared in the second array.
+//The function should return true if every value in the array 
+//has it's corresponding value squared in the second array.
 //The frequency of values must be the same, order doesnt matter.
 
 const arrayLength = 40400;
@@ -12,7 +13,7 @@ for (let i = 0; i < arrayLength; i++) {
 // console.log('arrOne: ', arrOne)
 // console.log('arrSquared: ', arrSquared)
 
-function naiveSolutionArraySquared(arr1, arr2) {
+function ArraySquaredNaive(arr1, arr2) {
     if (arr1.length !== arr2.length) {
         return false;
     }
@@ -20,7 +21,7 @@ function naiveSolutionArraySquared(arr1, arr2) {
         let arr2_index = arr2.indexOf(i ** 2); // indexOf loops through entire array in worstcase
         if (arr2_index === -1) {
             // thus making this nested loop : O(N2)
-            // index of elements not present in array is -1
+            // NOTE: In JavaScript, index of elements not present in array is -1
             return false;
         }
         arr2.splice(arr2_index, 1); // removes the element at given index
@@ -30,7 +31,7 @@ function naiveSolutionArraySquared(arr1, arr2) {
 
 // positive case
 let t1 = performance.now();
-let naive = naiveSolutionArraySquared(arrOne, arrSquared);
+let naive = ArraySquaredNaive(arrOne, arrSquared);
 let t2 = performance.now();
 console.log(naive, 'time by naive: ', `${t2 - t1}`);
 
@@ -44,7 +45,7 @@ for (let i = 0; i < arrayLength; i++) {
 //arrSquared[arrSquared.length - 1] = 1;
 arrSquared[10] = 0;
 t1 = performance.now();
-naive = naiveSolutionArraySquared(arrOne, arrSquared);
+naive = ArraySquaredNaive(arrOne, arrSquared);
 t2 = performance.now();
 console.log(naive, 'time by naive: ', `${t2 - t1}`);
 
@@ -59,7 +60,7 @@ for (let i = 0; i < arrayLength; i++) {
 // console.log('arrOne: ', arrOne)
 // console.log('arrSquared: ', arrSquared)
 
-function optimalSolutionArraySquared(arr1, arr2) {
+function ArraySquaredOptimal(arr1, arr2) {
     if (arr1.length !== arr2.length) {
         // initial length check
         return false;
@@ -89,7 +90,7 @@ function optimalSolutionArraySquared(arr1, arr2) {
 
 //positive case
 t1 = performance.now();
-let optimal = optimalSolutionArraySquared(arrOne, arrSquared);
+let optimal = ArraySquaredOptimal(arrOne, arrSquared);
 t2 = performance.now();
 console.log(optimal, 'time by optimal: ', `${t2 - t1}`);
 
@@ -103,7 +104,7 @@ for (let i = 0; i < arrayLength; i++) {
 //arrSquared[arrSquared.length - 1] = 1;
 arrSquared[10] = 0;
 t1 = performance.now();
-optimal = optimalSolutionArraySquared([1, 2, 5, 5], [4, 2, 1, 2]);
+optimal = ArraySquaredOptimal([1, 2, 5, 5], [4, 2, 1, 2]);
 t2 = performance.now();
 console.log(optimal, 'time by optimal: ', `${t2 - t1}`);
 
