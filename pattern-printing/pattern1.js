@@ -12,7 +12,6 @@ function pattern1(n) {
     }
 }
 
-
 pattern1(2)
 
 pattern1(4)
