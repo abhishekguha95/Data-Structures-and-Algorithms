@@ -80,7 +80,7 @@ function secondLargestElementOptimal(arr) {
             // console.log('in if 1')
             secMax = max;
             max = arr[j];
-        } else if (max > arr[j] && secMax < arr[j]) {
+        } else if (arr[j] < max && arr[j] > secMax) {
             // console.log('in if 2')
             secMax = arr[j];
         }
